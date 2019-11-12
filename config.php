@@ -16,18 +16,17 @@ function parse_heroku_postgres_url_string($url_string) {
 }
 
 $parsed = parse_heroku_postgres_url_string(getenv('DATABASE_URL'));
-var_dump($parsed['hostname']);
 
 $CFG->dbtype    = 'pgsql';
 $CFG->dblibrary = 'native';
-$CFG->dbhost    = getenv('DATABASE_HOST');
-$CFG->dbname    = getenv('DATABASE_NAME');
-$CFG->dbuser    = getenv('DATABASE_USER');
-$CFG->dbpass    = getenv('DATABASE_PASSWORD');
+$CFG->dbhost    = $parsed['hostname'];
+$CFG->dbname    = $parsed['database'];
+$CFG->dbuser    = $parsed['username'];
+$CFG->dbpass    = $parsed['password'];
 $CFG->prefix    = 'mdl_';
 $CFG->dboptions = array (
   'dbpersist' => 0,
-  'dbport' => getenv('DATABASE_PORT'),
+  'dbport' => $parsed['port],
   'dbsocket' => '',
 );
 

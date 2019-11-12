@@ -16,7 +16,7 @@ function parse_heroku_postgres_url_string($url_string) {
 }
 
 $parsed = parse_heroku_postgres_url_string(getenv('DATABASE_URL'));
-var_dump($parsed);
+var_dump($parsed['hostname']);
 
 $CFG->dbtype    = 'pgsql';
 $CFG->dblibrary = 'native';

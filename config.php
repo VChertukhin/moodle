@@ -27,7 +27,6 @@ $CFG->prefix    = 'mdl_';
 $CFG->dboptions = [
   'dbpersist' => 0,
   'dbport' => $parsed['port],
-  'dbsocket' => ''
 ];
 
 $CFG->wwwroot   = getenv('WWWROOT');

@@ -24,10 +24,10 @@ $CFG->dbname    = $parsed['database'];
 $CFG->dbuser    = $parsed['username'];
 $CFG->dbpass    = $parsed['password'];
 $CFG->prefix    = 'mdl_';
-$CFG->dboptions = [
+$CFG->dboptions = array(
   'dbpersist' => 0,
   'dbport' => $parsed['port],
-];
+);
 
 $CFG->wwwroot   = getenv('WWWROOT');
 $CFG->dataroot  = getenv('DATAROOT');

@@ -4,6 +4,20 @@ unset($CFG);
 global $CFG;
 $CFG = new stdClass();
 
+function parse_heroku_postgres_url_string($url_string) {
+	$parts = parse_url($url_string);
+	return [
+		'username'	=> $parts['user'],
+		'password'	=> $parts['pass'],
+		'hostname'	=> $parts['host'],
+		'database'	=> substr($parts['path'], 1),
+		'port'		=> $parts['port'],
+	];
+}
+
+$parsed = parse_heroku_postgres_url_string(getenv('DATABASE_URL'));
+var_dump($parsed);
+
 $CFG->dbtype    = 'pgsql';
 $CFG->dblibrary = 'native';
 $CFG->dbhost    = getenv('DATABASE_HOST');
